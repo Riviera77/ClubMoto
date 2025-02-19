@@ -3,3 +3,8 @@ controllers:
         path: ../src/Controller/
         namespace: App\Controller
     type: attribute
+
+#Possibilité de centraliser toutes les routes au même endroit
+#page_contact:
+#    path: /contact
+#    controller: App\Controller\PagesController::contact
