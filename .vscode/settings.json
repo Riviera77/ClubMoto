@@ -1,0 +1,21 @@
+{
+    "sqltools.connections": [
+        {
+            "pgOptions": {
+                "statement_timeout": 0,
+                "query_timeout": 0,
+                "connectionTimeoutMillis": 5000,
+                "idleTimeoutMillis": 10000,
+                "max": 10
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 52172,
+            "driver": "PostgreSQL",
+            "name": "club_moto_network",
+            "database": "club-moto-db",
+            "username": "user",
+            "password": "password"
+        }
+    ]
+}
