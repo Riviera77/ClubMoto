@@ -9,10 +9,10 @@
                 "max": 10
             },
             "previewLimit": 50,
-            "server": "localhost",
-            "port": 52172,
+            "server": "127.0.0.1",
+            "port": 59549,
             "driver": "PostgreSQL",
-            "name": "club_moto_network",
+            "name": "club-moto",
             "database": "club-moto-db",
             "username": "user",
             "password": "password"
