@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Marques{% endblock %}
+
+{% block body %}
+
+    <table class="table">
+    {#correspond à la partie READ (tous) du CRUD#}
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nom</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+        {#On boucle sur les marques (boucle for)
+        pour afficher les informations de chaque marque dans un tableau
+        #}
+            {% for marque in marques %}
+                <tr>
+                    <td scope="row>">{{marque.id}}</td>
+                    <td>{{marque.libelle}}</td>
+                    <td>
+                    {#correspond à la partie (1) READ du CRUD
+                    Et j'utilise la fonction path() pour générer l'URL
+                    Et en 2ème paramètre, je passe l'id de la marque
+                    #}
+                    <a href="{{path('marque_show', {'id': marque.id})}}" class="btn btn-primary">Détail</a>
+                    {#correspond à la partie UPDATE du CRUD#}
+                    <a href="{{path('marque_update', {'id': marque.id})}}" class="btn btn-primary">Modifier</a>
+                    {#correspond à la partie DELETE du CRUD#}
+                    <a href="{{path('marque_delete', {'id': marque.id})}}" class="btn btn-primary">Supprimer</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{path('marque_create')}}" class="btn btn-primary">Ajouter une marque</a>
+
+
+{% endblock %}
