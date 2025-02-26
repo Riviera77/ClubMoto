@@ -2,16 +2,18 @@
 
 namespace App\Controller;
 
+use App\Entity\Marque;
 use App\Repository\MarqueRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 final class MarqueController extends AbstractController
 {
     // create CRUD Create, Read (tous et 1), Update, Delete
-    //| je rajoute la method GET et ou POST
-    //je rajoute dead&dumb Method pour voir si la route est bien appelée
+    // je rajoute la method GET et ou POST
+    //je rajoute dead&dumb Method pour voir si la route est bien appelée avt template
     //je rajoute un requirements pour vérifier que l'id est un entier
 
     // route marque générée automatiquement; sera utilisée pour afficher 
@@ -20,7 +22,8 @@ final class MarqueController extends AbstractController
     public function index(MarqueRepository $marqueRepository): Response
     {
         return $this->render('marque/index.html.twig', [
-            'controller_name' => 'MarqueController',
+            //requête findAll = SELECT * FROM marque WHERE id = valeur 
+            //le resultat de cette requete est passée à la vue =template marques
             'marques' => $marqueRepository->findAll(),
         ]);
     }
@@ -30,12 +33,10 @@ final class MarqueController extends AbstractController
     //en partie du Read (1)
     
     #[Route('/marque/{id}', name: 'marque_show', methods: ['GET'], requirements: ['id' => '\d+'])]
-    public function show(int $id): Response
+    public function show(Marque $marque): Response
     {
-        dd(__METHOD__);
         return $this->render('marque/show.html.twig', [
-            'controller_name' => 'MarqueController',
-            'id' => $id
+            'marque' => $marque
         ]);
     }
 
@@ -44,6 +45,7 @@ final class MarqueController extends AbstractController
     #[Route('/marque/create', name: 'marque_create', methods: ['GET', 'POST'], requirements: ['id' => '\d+'])]
     public function create(): Response
     {
+        dd(__METHOD__);
         return $this->render('marque/create.html.twig', [
             'controller_name' => 'MarqueController',
             
@@ -74,5 +76,4 @@ final class MarqueController extends AbstractController
         ]);
     }
 
-    
 }
